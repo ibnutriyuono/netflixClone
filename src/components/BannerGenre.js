@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
+    marginBottom: 20,
   },
   bannerGenreText: {
     color: colors.white,
