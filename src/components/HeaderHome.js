@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useNavigation } from "@react-navigation/native";
 import {
   StyleSheet,
   Text,
@@ -7,6 +7,7 @@ import {
   View,
   Image,
   ScrollView,
+  TouchableOpacity,
 } from "react-native";
 import { globalStyles, colors, stockImages, fonts } from "../constants";
 
@@ -20,6 +21,7 @@ import {
 } from "./";
 
 const HeaderHome = () => {
+  const navigation = useNavigation();
   return (
     <ScrollView>
       <View style={styles.imageWrapper}>
@@ -33,9 +35,15 @@ const HeaderHome = () => {
               source={stockImages.netflixTransparent}
               style={styles.netflixLogo}
             />
-            <Text style={styles.navText}>TV Shows</Text>
-            <Text style={styles.navText}>Movies</Text>
-            <Text style={[styles.navText, { marginRight: 50 }]}>My List</Text>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+              <Text style={styles.navText}>TV Shows</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+              <Text style={styles.navText}>Movies</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+              <Text style={[styles.navText, { marginRight: 50 }]}>My List</Text>
+            </TouchableOpacity>
           </View>
           <BannerGenre />
           <View style={styles.bannerContainer}>
