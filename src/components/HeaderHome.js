@@ -1,9 +1,12 @@
 import React from "react";
 
 import { StyleSheet, Text, ImageBackground, View, Image } from "react-native";
-import { globalStyles, colors, stockImages } from "../constants";
+import { globalStyles, colors, stockImages, fonts } from "../constants";
 import StatusBar from "./StatusBar";
 import BannerGenre from "./BannerGenre";
+import BannerPlay from "./BannerPlay";
+import BannerList from "./BannerList";
+import BannerInfo from "./BannerInfo";
 
 const HeaderHome = () => {
   return (
@@ -28,16 +31,17 @@ const HeaderHome = () => {
             style={{
               flexDirection: "row",
               position: "absolute",
-              justifyContent: "space-around",
+              justifyContent: "space-evenly",
+              alignItems: "center",
               bottom: 10,
               left: 0,
               right: 0,
               marginHorizontal: 50,
             }}
           >
-            <Text style={styles.navText}>My List</Text>
-            <Text style={styles.navText}>Play</Text>
-            <Text style={styles.navText}>Info</Text>
+            <BannerList />
+            <BannerPlay />
+            <BannerInfo />
           </View>
         </ImageBackground>
       </View>
@@ -68,5 +72,11 @@ const styles = StyleSheet.create({
   navText: {
     color: colors.white,
     fontWeight: "bold",
+  },
+  listText: {
+    color: colors.white,
+    // fontWeight: "bold",
+    fontFamily: fonts.medium,
+    fontSize: 18,
   },
 });

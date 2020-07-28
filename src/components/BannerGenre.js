@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { globalStyles, colors, stockImages } from "../constants";
+import { globalStyles, colors, stockImages, fonts } from "../constants";
 
 const BannerGenre = () => {
   return (
@@ -31,12 +31,13 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    marginBottom: 20,
+    marginBottom: 45,
   },
   bannerGenreText: {
     color: colors.white,
-    fontWeight: "100",
-    marginHorizontal: 20,
+    fontWeight: "bold",
+    marginHorizontal: 30,
+    fontFamily: fonts.light,
   },
   bannerBull: {
     color: colors.infoGrey,
