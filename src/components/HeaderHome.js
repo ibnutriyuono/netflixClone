@@ -9,6 +9,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 import { globalStyles, colors, stockImages, fonts } from "../constants";
 
 import {
@@ -23,12 +24,22 @@ import {
 const HeaderHome = () => {
   const navigation = useNavigation();
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: colors.headerBarBg }}>
       <View style={styles.imageWrapper}>
         <ImageBackground
           style={styles.bannerStyle}
           source={stockImages.bannerPoster}
         >
+          <LinearGradient
+            colors={["transparent", colors.headerBarBg]}
+            style={{
+              position: "absolute",
+              left: 0,
+              right: 0,
+              top: 0,
+              height: "100%",
+            }}
+          />
           <View style={[globalStyles.flexRowSpace, styles.container]}>
             <StatusBar statusBarStyle="light" />
             <Image

@@ -13,7 +13,6 @@ const BannerList = (props) => {
         color={colors.infoGrey}
         style={{ marginLeft: 23 }}
       />
-      {console.log(pressed)}
       <Text style={styles.navText}>My List</Text>
     </TouchableOpacity>
   );
