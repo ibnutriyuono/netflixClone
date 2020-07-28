@@ -1,16 +1,24 @@
 import React from "react";
 
-import { StyleSheet, Text, ImageBackground, View, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  ImageBackground,
+  View,
+  Image,
+  ScrollView,
+} from "react-native";
 import { globalStyles, colors, stockImages, fonts } from "../constants";
 import StatusBar from "./StatusBar";
 import BannerGenre from "./BannerGenre";
 import BannerPlay from "./BannerPlay";
 import BannerList from "./BannerList";
 import BannerInfo from "./BannerInfo";
+import PreviewsScroll from "./PreviewsScroll";
 
 const HeaderHome = () => {
   return (
-    <View>
+    <ScrollView>
       <View style={styles.imageWrapper}>
         <ImageBackground
           style={styles.bannerStyle}
@@ -27,25 +35,17 @@ const HeaderHome = () => {
             <Text style={[styles.navText, { marginRight: 50 }]}>My List</Text>
           </View>
           <BannerGenre />
-          <View
-            style={{
-              flexDirection: "row",
-              position: "absolute",
-              justifyContent: "space-evenly",
-              alignItems: "center",
-              bottom: 10,
-              left: 0,
-              right: 0,
-              marginHorizontal: 50,
-            }}
-          >
+          <View style={styles.bannerContainer}>
             <BannerList />
             <BannerPlay />
             <BannerInfo />
           </View>
         </ImageBackground>
       </View>
-    </View>
+      <PreviewsScroll heading="Previews" />
+      <PreviewsScroll heading="Continue Watching for Muhamad Ibnu" />
+      <PreviewsScroll heading="My List" />
+    </ScrollView>
   );
 };
 
@@ -78,5 +78,15 @@ const styles = StyleSheet.create({
     // fontWeight: "bold",
     fontFamily: fonts.medium,
     fontSize: 18,
+  },
+  bannerContainer: {
+    flexDirection: "row",
+    position: "absolute",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    bottom: 10,
+    left: 0,
+    right: 0,
+    marginHorizontal: 50,
   },
 });
