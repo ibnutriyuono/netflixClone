@@ -9,12 +9,15 @@ import {
   ScrollView,
 } from "react-native";
 import { globalStyles, colors, stockImages, fonts } from "../constants";
-import StatusBar from "./StatusBar";
-import BannerGenre from "./BannerGenre";
-import BannerPlay from "./BannerPlay";
-import BannerList from "./BannerList";
-import BannerInfo from "./BannerInfo";
-import PreviewsScroll from "./PreviewsScroll";
+
+import {
+  BannerGenre,
+  BannerInfo,
+  BannerList,
+  BannerPlay,
+  PreviewsScroll,
+  StatusBar,
+} from "./";
 
 const HeaderHome = () => {
   return (
