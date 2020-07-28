@@ -1,19 +1,21 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { colors, fonts } from "../constants";
 
-const BannerList = () => {
+const BannerList = (props) => {
+  const [pressed, setPress] = useState(true);
   return (
-    <View style={{}}>
+    <TouchableOpacity onPress={() => setPress(!pressed)}>
       <Icon
-        name="plus"
+        name={pressed ? "plus" : "check"}
         size={25}
         color={colors.infoGrey}
         style={{ marginLeft: 23 }}
       />
+      {console.log(pressed)}
       <Text style={styles.navText}>My List</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
