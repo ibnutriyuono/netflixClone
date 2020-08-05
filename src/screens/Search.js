@@ -1,11 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View, TextInput } from "react-native";
+import { useSelector } from "react-redux";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import { StatusBar } from "../components";
 import { colors } from "../constants";
 
 const Search = () => {
+  const state = useSelector((state) => state);
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -28,7 +30,7 @@ const Search = () => {
           autoCapitalize="none"
         />
       </View>
-      <Text style={{ color: colors.white }}>SearchScreen</Text>
+      <Text style={{ color: colors.white }}>{state.myList}</Text>
     </View>
   );
 };
