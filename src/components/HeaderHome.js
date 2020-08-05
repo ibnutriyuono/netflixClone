@@ -12,14 +12,7 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { globalStyles, colors, stockImages, fonts } from "../constants";
 
-import {
-  BannerGenre,
-  BannerInfo,
-  BannerList,
-  BannerPlay,
-  PreviewsScroll,
-  StatusBar,
-} from "./";
+import { BannerGenre, BannerInfo, BannerList, BannerPlay, StatusBar } from "./";
 
 const HeaderHome = () => {
   const navigation = useNavigation();
@@ -64,9 +57,6 @@ const HeaderHome = () => {
           </View>
         </ImageBackground>
       </View>
-      <PreviewsScroll heading="Previews" />
-      <PreviewsScroll heading="Continue Watching for Muhamad Ibnu" />
-      <PreviewsScroll heading="My List" />
     </ScrollView>
   );
 };
