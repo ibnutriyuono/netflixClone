@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { addToMyList } from "../actions/ListAction";
 import {
   StyleSheet,
   Text,
@@ -12,15 +13,19 @@ import { globalStyles, colors, stockImages, fonts } from "../constants";
 
 const PreviewsScroll = (props) => {
   const state = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   return (
     <View style={styles.previewsContainer}>
       <Text style={styles.previewsText}>{props.heading}</Text>
       <ScrollView horizontal>
+        {console.log(state)}
         {props.data.results.map((item, index) => {
           return (
             <View key={index}>
-              <TouchableOpacity onPress={() => console.log(item.id)}>
+              <TouchableOpacity
+                onPress={() => dispatch(addToMyList(item.id.toString()))}
+              >
                 <View>
                   <Image
                     source={{
