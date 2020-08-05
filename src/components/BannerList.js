@@ -11,7 +11,7 @@ const BannerList = (props) => {
 
   _handlePress = () => {
     setPress(!pressed);
-    pressed ? dispatch(addToMyList()) : dispatch(removeFromMyList());
+    pressed ? dispatch(addToMyList("90447")) : dispatch(removeFromMyList());
   };
 
   return (
