@@ -14,6 +14,7 @@ import More from "../screens/More";
 import TVShows from "../screens/TVShows";
 import Movies from "../screens/Movies";
 import MyList from "../screens/MyList";
+import Details from "../screens/Details";
 import Login from "../screens/Login";
 import Register from "../screens/Register";
 
@@ -30,6 +31,7 @@ const HomeStackScreen = () => (
     <HomeStack.Screen name="TVShows" component={TVShows} />
     <HomeStack.Screen name="Movies" component={Movies} />
     <HomeStack.Screen name="MyList" component={MyList} />
+    <HomeStack.Screen name="Details" component={Details} />
   </HomeStack.Navigator>
 );
 
@@ -47,7 +49,7 @@ const AppScreens = () => (
   >
     <Tab.Screen
       name="Home"
-      component={Home}
+      component={HomeStackScreen}
       options={{
         tabBarLabel: "Home",
         tabBarIcon: ({ color, size }) => (

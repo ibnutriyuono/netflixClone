@@ -1,18 +1,22 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { colors, fonts } from "../constants";
 
 const BannerInfo = () => {
+  const navigation = useNavigation();
   return (
     <View style={{}}>
-      <Icon
-        name="information-outline"
-        size={25}
-        color={colors.infoGrey}
-        style={{ marginLeft: 23 }}
-      />
-      <Text style={styles.navText}>Info</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("Details")}>
+        <Icon
+          name="information-outline"
+          size={25}
+          color={colors.infoGrey}
+          style={{ marginLeft: 23 }}
+        />
+        <Text style={styles.navText}>Info</Text>
+      </TouchableOpacity>
     </View>
   );
 };
