@@ -39,13 +39,13 @@ const HeaderHome = () => {
               source={stockImages.netflixTransparent}
               style={styles.netflixLogo}
             />
-            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <TouchableOpacity onPress={() => navigation.navigate("TVShows")}>
               <Text style={styles.navText}>TV Shows</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <TouchableOpacity onPress={() => navigation.navigate("Movies")}>
               <Text style={styles.navText}>Movies</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <TouchableOpacity onPress={() => navigation.navigate("MyList")}>
               <Text style={[styles.navText, { marginRight: 50 }]}>My List</Text>
             </TouchableOpacity>
           </View>
