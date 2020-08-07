@@ -51,7 +51,7 @@ const HeaderHome = () => {
           </View>
           <BannerGenre />
           <View style={styles.bannerContainer}>
-            <BannerList />
+            <BannerList movieId="90447" size="25" />
             <BannerPlay />
             <BannerInfo />
           </View>

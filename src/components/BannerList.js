@@ -12,15 +12,15 @@ const BannerList = (props) => {
   _handlePress = () => {
     setPress(!pressed);
     pressed
-      ? dispatch(addToMyList("90447"))
-      : dispatch(removeFromMyList("90447"));
+      ? dispatch(addToMyList(props.movieId))
+      : dispatch(removeFromMyList(props.movieId));
   };
 
   return (
     <TouchableOpacity onPress={() => _handlePress()}>
       <Icon
         name={pressed ? "plus" : "check"}
-        size={25}
+        size={props.size}
         color={colors.infoGrey}
         style={{ marginLeft: 23 }}
       />
