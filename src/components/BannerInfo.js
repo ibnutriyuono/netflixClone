@@ -8,7 +8,9 @@ const BannerInfo = () => {
   const navigation = useNavigation();
   return (
     <View style={{}}>
-      <TouchableOpacity onPress={() => navigation.navigate("Details")}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Details", { id: "90447" })}
+      >
         <Icon
           name="information-outline"
           size={25}
