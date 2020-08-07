@@ -11,6 +11,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import YoutubePlayer from "react-native-youtube-iframe";
+import BannerList from "../components/BannerList";
 import { colors, fonts } from "../constants";
 
 const Details = ({ route }) => {
@@ -176,8 +177,51 @@ const Details = ({ route }) => {
               >
                 {arr[0][0].last_episode_to_air.overview}
               </Text>
+              <View
+                style={{
+                  flexDirection: "row",
+                  marginLeft: 20,
+                  marginBottom: 10,
+                }}
+              >
+                <BannerList movieId={arr[0][0].id} size="35" />
+                <View>
+                  <Ionicons
+                    name="ios-thumbs-up"
+                    color={colors.textGrey}
+                    size={25}
+                    style={{ marginHorizontal: 20 }}
+                  />
+                  <Text
+                    style={{
+                      color: colors.infoGrey,
+                      fontFamily: fonts.regular,
+                      fontSize: 12,
+                      marginLeft: 15,
+                    }}
+                  >
+                    Rate
+                  </Text>
+                </View>
+                <View>
+                  <Ionicons
+                    name="md-share"
+                    color={colors.textGrey}
+                    size={25}
+                    style={{ marginLeft: 5 }}
+                  />
+                  <Text
+                    style={{
+                      color: colors.infoGrey,
+                      fontFamily: fonts.regular,
+                      fontSize: 12,
+                    }}
+                  >
+                    Share
+                  </Text>
+                </View>
+              </View>
               {arr[0][1].results.map((data, index) => {
-                // console.log(data);
                 return (
                   <View
                     key={index}
