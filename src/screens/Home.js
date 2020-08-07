@@ -15,30 +15,38 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(
-      "https://api.themoviedb.org/3/discover/movie?api_key=531394353b1ac68faa3d494a4213fa94&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1"
-      // "https://api.themoviedb.org/3/list/500?api_key=531394353b1ac68faa3d494a4213fa94&language=en-US"
-    )
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+    const url =
+      "http://api.themoviedb.org/3/discover/tv?api_key=531394353b1ac68faa3d494a4213fa94&with_networks=213";
+    fetch(url)
       .then((res) => res.json())
-      .then((res) => setData((arr) => [...arr, res]));
+      .then((res) => {
+        setData((arr) => [...arr, res]);
+        setReady(true);
+      });
     // dispatch(getMovies(arr));
-    setReady(true);
+    return function cleanup() {
+      abortController.abort();
+    };
   }, []);
   return (
     <ScrollView style={globalStyles.container}>
       <HeaderHome />
-      {isReady ? (
-        <View>
-          <PreviewsScroll heading="Previews" data={arr[0]} />
-          <PreviewsScroll
-            heading="Continue Watching for Muhamad Ibnu"
-            data={arr[0]}
-          />
-          <PreviewsScroll heading="My List" data={arr[0]} />
-        </View>
-      ) : (
-        console.log("sadKEK")
-      )}
+      <View>
+        {isReady ? (
+          <View>
+            <PreviewsScroll heading="Previews" data={arr[0]} />
+            <PreviewsScroll
+              heading="Continue Watching for Muhamad Ibnu"
+              data={arr[0]}
+            />
+            <PreviewsScroll heading="My List" data={arr[0]} />
+          </View>
+        ) : (
+          <Text style={{ color: colors.white }}>Loading ... </Text>
+        )}
+      </View>
     </ScrollView>
   );
 };
