@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToMyList } from "../actions/ListAction";
+import { useNavigation } from "@react-navigation/native";
 import {
   StyleSheet,
   Text,
@@ -14,17 +15,17 @@ import { globalStyles, colors, stockImages, fonts } from "../constants";
 const PreviewsScroll = (props) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   return (
     <View style={styles.previewsContainer}>
       <Text style={styles.previewsText}>{props.heading}</Text>
       <ScrollView horizontal>
-        {console.log(state)}
         {props.data.results.map((item, index) => {
           return (
             <View key={index}>
               <TouchableOpacity
-                onPress={() => dispatch(addToMyList(item.id.toString()))}
+                onPress={() => navigation.navigate("Details", { id: item.id })}
               >
                 <View>
                   <Image
@@ -34,9 +35,9 @@ const PreviewsScroll = (props) => {
                     style={styles.previewsImage}
                   />
                   <Text style={styles.title}>
-                    {item.original_title.length > 19
-                      ? `${item.original_title.substring(0, 20 - 3)} ...`
-                      : item.original_title}
+                    {item.original_name.length > 19
+                      ? `${item.original_name.substring(0, 20 - 3)} ...`
+                      : item.original_name}
                   </Text>
                 </View>
               </TouchableOpacity>
