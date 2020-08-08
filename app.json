@@ -13,6 +13,10 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
+    "androidNavigationBar": {
+      "barStyle": "dark-content",
+      "backgroundColor": "#000000"
+    },
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
