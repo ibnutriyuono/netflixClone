@@ -20,7 +20,7 @@ const BannerList = (props) => {
     <TouchableOpacity onPress={() => _handlePress()}>
       <Icon
         name={pressed ? "plus" : "check"}
-        size={props.size}
+        size={25}
         color={colors.infoGrey}
         style={{ marginLeft: 23 }}
       />
