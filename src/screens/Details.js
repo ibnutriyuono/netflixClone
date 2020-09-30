@@ -7,6 +7,7 @@ import {
   Image,
   ImageBackground,
   ScrollView,
+  TouchableOpacity,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
@@ -19,20 +20,16 @@ const Details = ({ route }) => {
   const [arr, setData] = useState([]);
   const [trailers, setTrailers] = useState([]);
   const [isReady, setReady] = useState(false);
+  const [trailersComponent, setTrailersComponent] = useState(true);
   const dispatch = useDispatch();
   const detailsUrl = `https://api.themoviedb.org/3/tv/${id}?api_key=531394353b1ac68faa3d494a4213fa94&language=en-US`;
   const trailersUrl = `https://api.themoviedb.org/3/tv/${id}/videos?api_key=531394353b1ac68faa3d494a4213fa94&language=en-US`;
+  const moreUrl = `https://api.themoviedb.org/3/tv/${id}/similar?api_key=531394353b1ac68faa3d494a4213fa94&language=en-US&page=1`;
 
   useEffect(() => {
     const abortController = new AbortController();
     const signal = abortController.signal;
-    // fetch(detailsUrl)
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    // setData((arr) => [...arr, res]);
-    // setReady(true);
-    //   });
-    Promise.all([fetch(detailsUrl), fetch(trailersUrl)])
+    Promise.all([fetch(detailsUrl), fetch(trailersUrl), fetch(moreUrl)])
       .then((res) => {
         return Promise.all(
           res.map((res) => {
@@ -49,6 +46,7 @@ const Details = ({ route }) => {
       abortController.abort();
     };
   }, []);
+
   return (
     <ScrollView>
       <View
@@ -180,7 +178,7 @@ const Details = ({ route }) => {
               <View
                 style={{
                   flexDirection: "row",
-                  marginLeft: 20,
+                  marginLeft: 5,
                   marginBottom: 10,
                 }}
               >
@@ -221,27 +219,77 @@ const Details = ({ route }) => {
                   </Text>
                 </View>
               </View>
-              {arr[0][1].results.map((data, index) => {
-                return (
-                  <View
-                    key={index}
-                    style={{ marginTop: 5, marginHorizontal: 10 }}
-                  >
-                    <YoutubePlayer
-                      height={250}
-                      width={"100%"}
-                      videoId={data.key}
-                      play={false}
-                      volume={50}
-                      playbackRate={1}
-                      initialPlayerParams={{
-                        cc_lang_pref: "us",
-                        showClosedCaptions: true,
-                      }}
-                    />
-                  </View>
-                );
-              })}
+              <View
+                style={{
+                  flexDirection: "row",
+                  marginLeft: 20,
+                  marginBottom: 25,
+                  marginTop: 15,
+                }}
+              >
+                <TouchableOpacity onPress={() => setTrailersComponent(true)}>
+                  <Text style={{ marginRight: 10, color: colors.white }}>
+                    TRAILERS & MORE
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => setTrailersComponent(false)}>
+                  <Text style={{ marginRight: 10, color: colors.white }}>
+                    MORE LIKE THIS
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  marginLeft: 20,
+                  marginBottom: 25,
+                  marginTop: 15,
+                }}
+              >
+                {trailersComponent
+                  ? arr[0][1].results.map((data, index) => {
+                      return (
+                        <View key={index}>
+                          <View
+                            style={{
+                              flexDirection: "row",
+                            }}
+                          >
+                            <YoutubePlayer
+                              height={250}
+                              width={"100%"}
+                              videoId={data.key}
+                              play={false}
+                              volume={50}
+                              playbackRate={1}
+                              initialPlayerParams={{
+                                cc_lang_pref: "us",
+                                showClosedCaptions: true,
+                              }}
+                            />
+                          </View>
+                        </View>
+                      );
+                    })
+                  : arr[0][2].results.map((data, index) => {
+                      return (
+                        <View key={index}>
+                          <View
+                            style={{
+                              flexDirection: "row",
+                              flexWrap: "wrap",
+                            }}
+                          >
+                            <Text
+                              style={{ marginRight: 10, color: colors.white }}
+                            >
+                              MORE LIKE THIS
+                            </Text>
+                          </View>
+                        </View>
+                      );
+                    })}
+              </View>
             </View>
           </View>
         ) : (
